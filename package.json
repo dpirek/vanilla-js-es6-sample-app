@@ -1,0 +1,15 @@
+{
+  "name": "Sample Vanilla Javascript ES6 APP",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "David Pirek",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
