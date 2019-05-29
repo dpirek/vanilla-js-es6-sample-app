@@ -41,9 +41,11 @@ class DateWidget extends HTMLElement {
 
   // Fires when an instance of the element is created.
   createdCallback() {
-    let template = `
-    <a style="background-image:url(http://cdn.krestanskaseznamka.cz/img/s/user-${this.userName}.jpg);" class="user-thumb" href="/user/${this.userName}"></a>
-    `;
+    let template = `<a
+      style="background-image:url(http://cdn.krestanskaseznamka.cz/img/s/user-${this.userName}.jpg);" 
+      class="user-thumb"
+      href="/user/${this.userName}"></a>`;
+
     this.createShadowRoot().innerHTML = style + template;
   }
 
