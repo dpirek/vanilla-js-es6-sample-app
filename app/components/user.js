@@ -1,4 +1,4 @@
-let style = `
+const style = `
   <style>
   .user-thumb {
     border: 1px solid #F3F0E2;
