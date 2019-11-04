@@ -24,11 +24,12 @@ function listUsers(list) {
   elm.querySelectorAll('.btn').forEach(function (node) {
     node.addEventListener('click', function () {
       let domItem = this.parentNode.parentNode;
-      console.log(domItem)
+
       deleteUser(this.dataset.id, function () {
         domItem.remove();
-        return false;
       });
+
+      return false;
     })
   });
 

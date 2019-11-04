@@ -1,3 +1,5 @@
+const tagName = 'user-widget';
+
 const style = `
   <style>
   .user-thumb {
@@ -13,50 +15,25 @@ const style = `
   </style>
 `;
 
-class DateWidget extends HTMLElement {
-  // When element is created or upgraded
-  // constructor() {
-  //   super();
-  // }
-
-  // When element is inserted into a document
+class User extends HTMLElement {
   connectedCallback() {
-    console.log('connectedCallback')
+    const userName = this.getAttribute('data-user-name');
+    const template = document.createElement('template');
+    template.innerHTML = this.getTemplate(userName, style);
+
+    if (!this.shadowRoot) {
+      this.attachShadow({mode: 'open'});
+      this.shadowRoot.appendChild(template.content.cloneNode(true));
+    }
   }
 
-  // When element is removed from a document
-  disconnectedCallback() {
-
-  }
-
-  // When an observed attribute changes
-  attributeChangedCallback(attrName, oldVal, newVal) {
-
-  }
-
-  // When the element is adopted into a new document
-  adoptedCallback() {
-
-  }
-
-  // Fires when an instance of the element is created.
-  createdCallback() {
-    let template = `<a
-      style="background-image:url(http://cdn.krestanskaseznamka.cz/img/s/user-${this.userName}.jpg);" 
+  getTemplate(userName, style) {
+    return `${style}<a
+      style="background-image:url(http://cdn.krestanskaseznamka.cz/img/s/user-${userName}.jpg);"
       class="user-thumb"
-      href="/user/${this.userName}"></a>`;
-
-    this.createShadowRoot().innerHTML = style + template;
-  }
-
-  // Fires when an instance was inserted into the document.
-  attachedCallback() {
-
-  }
-
-  get userName() {
-    return this.getAttribute('data-user-name');
+      href="#user/${userName}"></a>`;
   }
 }
 
-document.registerElement('user-widget', DateWidget);
+const register = () => customElements.define(tagName, User);
+window.WebComponents ? window.WebComponents.waitFor(register) : register();
