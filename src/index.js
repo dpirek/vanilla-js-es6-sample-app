@@ -22,7 +22,7 @@ function getHash() {
 }
 
 function navigate(hash) {
-  console.log('rendering user: ' + hash)
+  console.log('rendering user: v1' + hash)
   if (hash.includes('user/')) {
     userDetail(hash.replace('user/', ''));
   } else if (hash === 'users') {

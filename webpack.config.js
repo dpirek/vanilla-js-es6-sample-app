@@ -1,5 +1,7 @@
 module.exports = {
-  entry: './src/app.js',
+  watch: true,
+  mode: 'development',
+  entry: './src/index.js',
   module: {
     rules: [
       {
@@ -18,6 +20,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './dist'
+    contentBase: './dist',
+    port: 9000
   }
 };
