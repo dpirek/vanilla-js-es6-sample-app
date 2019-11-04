@@ -36,6 +36,19 @@ function listUsers(list) {
   render(elm);
 }
 
+function userDetail(userName) {
+  let elm = context(`
+    <h1>User Profile: ${userName}</h1>
+    <hr />
+    <div class="container-fluid">
+      <user-widget class="col-1" data-user-name="${userName}"></user-widget>
+    </div>
+  `);
+
+  render(elm);
+}
+
 export {
-  listUsers
+  listUsers,
+  userDetail
 };

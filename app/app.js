@@ -1,4 +1,4 @@
-import {listUsers} from "./views/user.js";
+import {listUsers, userDetail} from "./views/user.js";
 import {userList} from './services/user.js';
 import {renderDash} from "./views/dash.js";
 import {onChange} from "./lib/observer.js";
@@ -8,9 +8,9 @@ const state = {
 };
 
 const proxy = onChange(state, function() {
-  setTimeout(function () {
-    listUsers(state.users)
-  }, 0);
+  // setTimeout(function () {
+  //   listUsers(state.users)
+  // }, 0);
 });
 
 userList(function(list) {
@@ -22,7 +22,10 @@ function getHash() {
 }
 
 function navigate(hash) {
-  if (hash === 'users') {
+  console.log('rendering user: ' + hash)
+  if (hash.includes('user/')) {
+    userDetail(hash.replace('user/', ''));
+  } else if (hash === 'users') {
     listUsers(state.users);
   } else if (hash === 'dash') {
     renderDash();
